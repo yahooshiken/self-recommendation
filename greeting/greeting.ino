@@ -56,16 +56,9 @@ void loop()
 
   if (random(3) == 0)
   {
-    for (uint8_t i = 0; i < 12; i++)
-    {
-      writeServoUs(i, 1600);
-    }
-
+    writeServoUs(2, 1600);
     delay(1000);
-    for (uint8_t i = 0; i < 12; i++)
-    {
-      writeServoUs(i, 2000);
-    }
+    writeServoUs(2, 2000);
     delay(1000);
   }
 
