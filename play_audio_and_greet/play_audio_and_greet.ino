@@ -145,7 +145,7 @@ void greet()
     delay(1000);
   }
 
-  (0, BASE_LINE);
+  writeServoAngle(0, BASE_LINE);
   delay(random(300, 800));
 }
 
