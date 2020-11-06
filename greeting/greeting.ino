@@ -13,7 +13,7 @@ void setup()
 }
 
 // addr 0x01 means "control the number 1 servo by us"
-void Servo_write_us(uint8_t number, uint16_t us)
+void writeServoUs(uint8_t number, uint16_t us)
 {
   Wire.beginTransmission(SERVO_ADDR);
   Wire.write(0x00 | number);
@@ -23,7 +23,7 @@ void Servo_write_us(uint8_t number, uint16_t us)
 }
 
 // addr 0x11 means "control the number 1 servo by angle"
-void Servo_write_angle(uint8_t number, uint8_t angle)
+void writeServoAngle(uint8_t number, uint8_t angle)
 {
   Wire.beginTransmission(SERVO_ADDR);
   Wire.write(0x10 | number);
@@ -45,30 +45,30 @@ void loop()
   for (int i = 0; i < loopNum; i++)
   {
     int addition = random(MIN, MAX);
-    Servo_write_angle(0, BASE_LINE);
+    writeServoAngle(0, BASE_LINE);
     delay(random(MIN_SPEED, MAX_SPEED));
-    Servo_write_angle(0, BASE_LINE + addition);
+    writeServoAngle(0, BASE_LINE + addition);
     delay(random(MIN_SPEED, MAX_SPEED));
   }
 
-  Servo_write_angle(0, BASE_LINE);
+  writeServoAngle(0, BASE_LINE);
   delay(random(300, 800));
 
   if (random(3) == 0)
   {
     for (uint8_t i = 0; i < 12; i++)
     {
-      Servo_write_us(i, 1600);
+      writeServoUs(i, 1600);
     }
 
     delay(1000);
     for (uint8_t i = 0; i < 12; i++)
     {
-      Servo_write_us(i, 2000);
+      writeServoUs(i, 2000);
     }
     delay(1000);
   }
 
-  Servo_write_angle(0, BASE_LINE);
+  writeServoAngle(0, BASE_LINE);
   delay(random(300, 800));
 }
