@@ -13,7 +13,7 @@ void loop()
 {
   M5.Lcd.fillScreen(BLACK);
 
-  int distance = (int)pulseIn(DISTANCE, HIGH);
+  int distance = analogRead(DiSTANCE);
   M5.Lcd.setCursor(0, 0);
   M5.Lcd.print(distance);
 
